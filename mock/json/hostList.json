@@ -1,0 +1,9 @@
+{
+    "status": 0,
+    "data|10": [{
+        "ip":"@ip",
+        "mem":"@range(1)G",
+        "cpu":"@range(1)核"
+    }],
+    "msg":"请求成功"
+}

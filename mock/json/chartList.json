@@ -1,0 +1,30 @@
+{
+    "status": 0,
+    "data": {
+        "cpu_info": {
+            "tooltip": {
+                "formatter": "{a} <br/>{b} : {c}%"
+            },
+            "series": [
+                {
+                    "name": "主机xxxx",
+                    "type":"gauge",
+                    "process": {
+                        "show": true
+                    },
+                    "detail": {
+                        "valueAnimation": true,
+                        "formatter": "{value}"
+                    },
+                    "data": [
+                        {
+                            "value": 50,
+                            "name": "CPU使用率"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "msg": "请求成功"
+}
