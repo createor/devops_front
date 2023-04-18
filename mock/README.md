@@ -2,5 +2,12 @@
 
 ```
 目录文件说明：
+|--json  (模板文件)
+    |--userList.json  (用户)
+    |--
+|--host.js  (处理主机相关测试数据)
+|--role.js
+|--user.js
+|--index.js  (主文件)
 
 ```
