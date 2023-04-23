@@ -13,24 +13,34 @@ const router = new Router({
     {
       path: '/login',
       name: 'Login',
-      component: () => import('@/components/Login')
+      component: () => import('@/components/login/Login')
     },
     {
       path: '/',
       name: 'Home',
-      component: () => import('@/components/Home'),
+      component: () => import('@/components/main/Home'),
       // 子组件
       children: [
+        {
+          path: 'dashboard',
+          name: 'Dashboard',
+          component: () => import('@/components/dashboard/Dashboard')
+        },
         {
           // 子组件的path开头不需要加斜杠
           path: 'task',
           name: 'Task',
-          component: () => import('@/components/Task')
+          component: () => import('@/components/task/Task')
+        },
+        {
+          path: 'showtask',
+          name: 'ShowTask',
+          component: () => import('@/components/task/index')
         },
         {
           path: '404',
           name: 'Page404',
-          component: () => import('@/components/404')
+          component: () => import('@/components/error/404')
         },
         {
           path: 'alarm',
@@ -40,12 +50,7 @@ const router = new Router({
         {
           path: 'user',
           name: 'User',
-          component: () => import('@/components/User')
-        },
-        {
-          path: 'info',
-          name: 'Info',
-          component: () => import('@/components/Info')
+          component: () => import('@/components/user/User')
         },
         {
           path: 'host',

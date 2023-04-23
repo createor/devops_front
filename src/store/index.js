@@ -1,7 +1,7 @@
 // vuex状态模块
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { userLogin, getMenu } from '@/api/user'
+import { userLogin, getMenu, getInfo } from '@/api/user'
 
 Vue.use(Vuex)
 
@@ -10,11 +10,14 @@ export default new Vuex.Store({
     // 用于存放用户鉴权的token
     token: window.localStorage.getItem('token'),
     // 用于存放用户菜单信息
-    userMenu: []
+    userMenu: [],
+    // 重复用户信息
+    userInfo: {}
   },
   getters: {
     token: (state) => state.token,
-    menu: (state) => state.userMenu
+    menu: (state) => state.userMenu,
+    info: (state) => state.userInfo
   },
   mutations: {
     SET_TOkEN (state, token) {
@@ -22,6 +25,9 @@ export default new Vuex.Store({
     },
     SET_USER (state, userMenu) {
       state.userMenu = userMenu
+    },
+    SET_INFO (state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
@@ -49,6 +55,19 @@ export default new Vuex.Store({
           const { data } = response
           if (data.status === 0) {
             context.commit('SET_USER', data.data)
+          }
+          resolve()
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    info (context) {
+      return new Promise((resolve, reject) => {
+        getInfo().then((response) => {
+          const { data } = response
+          if (data.status === 0) {
+            context.commit('SET_INFO', data.data)
           }
           resolve()
         }).catch((error) => {

@@ -2,21 +2,23 @@
 <template>
   <div class="login">
     <el-container>
-        <el-header></el-header>
-        <el-main>
-            <el-form status-icon ref="form" :model="form" :rules="rules" label-width="80px">
-                <el-form-item label="用户名" prop="name">
-                    <el-input v-model="form.name" placeholder="请输入用户名" autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item label="密码" prop="passwd">
-                    <el-input v-model="form.passwd" placeholder="请输入密码" show-password autocomplete="off"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button :loading="loading" type="primary" @click="onSubmit('form')">登陆</el-button>
-                </el-form-item>
-            </el-form>
-        </el-main>
-        <el-footer></el-footer>
+      <el-header></el-header>
+      <el-main>
+        <div class="login-container">
+          <el-form status-icon ref="form" :model="form" :rules="rules" label-width="80px">
+            <el-form-item label="用户名" prop="name">
+              <el-input v-model="form.name" placeholder="请输入用户名" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="passwd">
+              <el-input v-model="form.passwd" placeholder="请输入密码" show-password autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button :loading="loading" type="primary" @click="onSubmit('form')">登陆</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-main>
+      <el-footer></el-footer>
     </el-container>
   </div>
 </template>
@@ -121,5 +123,25 @@ export default {
 .login {
   width: 100%;
   min-height: 100%;
+  position: relative;
+}
+.el-main {
+  width: 100%;
+  height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  width: 50vh;
+  height: 30vh;
+  padding: 30px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.el-button {
+  width: 30vh;
 }
 </style>

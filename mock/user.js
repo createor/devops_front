@@ -105,21 +105,26 @@ module.exports = [
                             "id": "1",
                             "name": "主机",
                             "path": "/host",
-                            "children":{
+                            "children":[{
                                 "id": "1-1",
                                 "name": "详情",
                                 "path": "/host/detail"
-                            }
+                            }]
                         },
                         {
                             "id": "2",
-                            "name": "信息",
-                            "path": "/info"
+                            "name": "用户",
+                            "path": "/user"
                         },
                         {
                             "id": "3",
                             "name": "告警",
                             "path": "/alarm"
+                        },
+                        {
+                            "id": "4",
+                            "name": "任务",
+                            "path": "/task"
                         }
                     ],
                     "msg": "请求成功"
@@ -140,6 +145,31 @@ module.exports = [
                 "status": 0,
                 "data": {
                     "public_key": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGZF08G4PT+yrufV4AOc3fRcgNcQE/g6T8+sx3N86nYx4cLk4TEPxOWrRElMCu//LTTuEXjI5iwSqhJz+tdKRhtR5BpJ2Nbji74mWnx2+MAIxty9mMbsrFHRmCsm1UBPAJi2kD0VBmn/L4SvSwlQKRzSKOGz92SXbycFDAfJeN6dQ9ZMHj4IHhONS5pCt3dJOncMHEaKUq9+MDb1XRsQZ07/Cg/MVPZ+2oEEeyi65rZgKiBP0xXZZcKD/ykw7mlklQITCGY78QxSc5PFOxRr+Kl9CaQ8+mrczqMFlMwwy//EA3u6GhKIuMj8+lT5hg6os3yu+nUnY/3BA9XpiMntswIDAQAB-----END PUBLIC KEY-----"
+                },
+                "msg": "请求成功"
+            }
+        }
+    },
+    {
+        url: '/api/user/modify',
+        type: 'post',
+        response: _ => {
+            return {
+                "status": 0,
+                "data": "",
+                "msg": "请求成功"
+            }
+        }
+    },
+    {
+        url: '/api/user/info',
+        type: 'get',
+        response: _ => {
+            return {
+                "status": 0,
+                "data": {
+                    "uid": 10086,
+                    "name": "admin"
                 },
                 "msg": "请求成功"
             }

@@ -3,9 +3,9 @@
   <div>
     <template>
       <!-- 根据姓名搜索 -->
-      <el-input v-model="searchName"/>
+      <el-input v-model="searchName" placeholder="请输入姓名" autocomplete="off" />
       <!-- 根据邮箱搜索 -->
-      <el-input v-model="searchEmail" />
+      <el-input v-model="searchEmail" placeholder="请输入邮箱" autocomplete="off" />
       <!-- 根据用户状态搜索 -->
       <el-select v-model="searchStatus">
         <el-option label="在用" value="inUse"></el-option>
@@ -15,6 +15,7 @@
     </template>
     <template>
     <el-table :data="tableData">
+      <el-table-column label="ID" prop="id" v-if="show"></el-table-column>
       <el-table-column label="姓名" prop="name"></el-table-column>
       <el-table-column label="邮箱地址" prop="email"></el-table-column>
       <el-table-column label="状态" prop="status" :formatter="showStatus"></el-table-column>
@@ -23,13 +24,24 @@
         <template slot-scope="scope">
           <el-button
             @click="changeStatus(scope.$index, scope.row)"
+            type="text"
+            size="small"
           >
           {{scope.row.status === 'inUse' ? '禁用' : '启用'}}
           </el-button>
           <el-button
             @click="editUser(scope.$index, scope.row)"
+            type="text"
+            size="small"
           >
           编辑
+          </el-button>
+          <el-button
+            @click="bindRole(scope.$index, scope.row)"
+            type="text"
+            size="small"
+          >
+          绑定角色
           </el-button>
         </template>
       </el-table-column>
@@ -45,15 +57,18 @@ export default {
   name: 'User',
   data () {
     return {
+      show: false,
       searchName: '',
       searchEmail: '',
       searchStatus: '',
       tableData: [{
+        id: 1,
         name: '张三',
         email: 'zhangsan@qq.com',
         status: 'inUse'
       },
       {
+        id: 2,
         name: '李四',
         email: 'lisi@qq.com',
         status: 'noUse',
@@ -100,7 +115,21 @@ export default {
     },
     editUser: function (index, data) {
 
+    },
+    bindRole: function (index, data) {
+      // 获取用户id
+      const { uid } = this.$store.getters.info
+      this.$router.push({
+        name: 'Role2User',
+        query: {id: uid}
+      }).catch(err => console.log(err))
     }
   }
 }
 </script>
+
+<style scoped>
+.el-input {
+  width: 200px;
+}
+</style>

@@ -11,8 +11,7 @@ export function userLogin (data) {
 }
 
 /**
- * @description 获取用户信息接口
- * @param {object} userInfo
+ * @description 获取用户菜单接口
  * @returns {instance}
  */
 export function getMenu () {
@@ -20,9 +19,17 @@ export function getMenu () {
 }
 
 /**
- * @description 获取公钥
+ * @description 获取公钥接口
  * @return {instance}
  */
 export function getKey () {
   return instance.get(`/api/user/key`)
+}
+
+/**
+ * @description 获取用户信息接口
+ * @return {instance}
+ */
+export function getInfo () {
+  return instance.get(`/api/user/info`)
 }

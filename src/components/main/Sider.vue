@@ -1,26 +1,32 @@
 <template>
-    <el-aside>
-      <el-menu>
-      <el-submenu v-for="item in menuList" :key="item.path" :index="item.id">
-        <template slot="title">{{ item.name }}</template>
-        <el-menu-item-group v-if="item.children">
-          <div v-for="child in item.children" :key="child.path">
-            <router-link :to="child.path">
-              <el-menu-item :index="child.id">{{ child.name }}</el-menu-item>
-            </router-link>
-          </div>
-        </el-menu-item-group>
-      </el-submenu>
-      </el-menu>
-    </el-aside>
+  <div v-if="item.children">
+    <el-submenu  :index="item.id">
+      <template slot="title">{{ item.name }}</template>
+      <el-menu-item-group>
+        <div v-for="child in item.children" :key="child.id">
+          <router-link :to="{ path: child.path }">
+            <el-menu-item :index="child.id">{{ child.name }}</el-menu-item>
+          </router-link>
+        </div>
+      </el-menu-item-group>
+    </el-submenu>
+  </div>
+  <div v-else>
+    <router-link :to="{ path: item.path }">
+      <el-menu-item  :index="item.id">
+        <i class="el-icon-menu"></i>
+        <span slot="title">{{ item.name }}</span>
+      </el-menu-item>
+    </router-link>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Sider',
   props: {
-    menuList: {
-      type: Array,
+    item: {
+      type: Object,
       required: true
     }
   },

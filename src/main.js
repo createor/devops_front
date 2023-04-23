@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import './styles/element-variables.scss'
+import '@/styles/index.scss'
 
 // 打印当前环境
 console.log(process.env.NODE_ENV)
