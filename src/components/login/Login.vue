@@ -99,6 +99,7 @@ export default {
       })
     },
     _getKey () {
+      // 获取公钥
       getKey().then((res) => {
         this.public_key = res.data.data.public_key
       }).catch((err) => {

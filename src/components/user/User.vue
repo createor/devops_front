@@ -3,11 +3,11 @@
   <div>
     <template>
       <!-- 根据姓名搜索 -->
-      <el-input v-model="searchName" placeholder="请输入姓名" autocomplete="off" />
+      <el-input v-model="searchName" placeholder="请输入姓名" autocomplete="off" clearable />
       <!-- 根据邮箱搜索 -->
-      <el-input v-model="searchEmail" placeholder="请输入邮箱" autocomplete="off" />
+      <el-input v-model="searchEmail" placeholder="请输入邮箱" autocomplete="off" clearable />
       <!-- 根据用户状态搜索 -->
-      <el-select v-model="searchStatus">
+      <el-select v-model="searchStatus" clearable>
         <el-option label="在用" value="inUse"></el-option>
         <el-option label="禁用" value="noUse"></el-option>
       </el-select>
@@ -19,6 +19,7 @@
       <el-table-column label="姓名" prop="name"></el-table-column>
       <el-table-column label="邮箱地址" prop="email"></el-table-column>
       <el-table-column label="状态" prop="status" :formatter="showStatus"></el-table-column>
+      <el-table-column label="部门" prop="department"></el-table-column>
       <el-table-column label="职位" prop="work"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -27,6 +28,7 @@
             type="text"
             size="small"
           >
+          <i class="el-icon-set-up"></i>
           {{scope.row.status === 'inUse' ? '禁用' : '启用'}}
           </el-button>
           <el-button
@@ -34,6 +36,7 @@
             type="text"
             size="small"
           >
+          <i class="el-icon-edit"></i>
           编辑
           </el-button>
           <el-button
@@ -41,6 +44,7 @@
             type="text"
             size="small"
           >
+          <i class="el-icon-link"></i>
           绑定角色
           </el-button>
         </template>
@@ -65,13 +69,16 @@ export default {
         id: 1,
         name: '张三',
         email: 'zhangsan@qq.com',
-        status: 'inUse'
+        status: 'inUse',
+        department: '办公室',
+        work: '经理'
       },
       {
         id: 2,
         name: '李四',
         email: 'lisi@qq.com',
         status: 'noUse',
+        department: '办公室',
         work: '售后'
       }]
     }
@@ -131,5 +138,8 @@ export default {
 <style scoped>
 .el-input {
   width: 200px;
+}
+.el-button span {
+  margin-left: 0px;
 }
 </style>

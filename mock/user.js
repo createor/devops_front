@@ -3,14 +3,44 @@ const JSEncrypt = require('jsencrypt').JSEncrypt
 const checkToken = require('./util').checkToken
 const Mock = require('mockjs')
 
-// const List = []  // 用户列表
+// 用户列表
+const users = [
+    {
+        uid: 1,
+        username: "admin",
+        password: "123456",
+        token: "123456"
+    },
+    {
+        uid: 2,
+        username: "test",
+        password: "test",
+        token: "test666"
+    }
+]
+
+/**
+ * @description 获取用户信息
+ * @param {string} key 键
+ * @param {string} value 值
+ * @return {object} 用户对象
+ */
+function getObj(key, value) {
+    return users.filter(obj => {
+        if (obj.hasOwnProperty(key) && obj[key] == value) {
+            return obj
+        }
+        return {}
+    })
+}
+
 // for(let i = 0;i < 10;i++) {
-//     List.push(Mock.mock({
+//     users.push(Mock.mock({
 //         id: '@increment',
 //         name: '@'
 //     }))
 // }
-// List.push({
+// users.push({
 //     id: 1001,
 //     name: 'admin'
 // })
@@ -81,6 +111,8 @@ module.exports = [
         type: 'post',
         response: config => {
             if (checkToken(config)) {
+                const userInfo = config.body
+                users.push(userInfo)
                 return {
                     "status": 0,
                     "msg": "添加成功"
@@ -104,27 +136,36 @@ module.exports = [
                         {
                             "id": "1",
                             "name": "主机",
-                            "path": "/host",
                             "children":[{
                                 "id": "1-1",
                                 "name": "详情",
-                                "path": "/host/detail"
+                                "path": "/host",
+                                "icon": ""
                             }]
                         },
                         {
                             "id": "2",
                             "name": "用户",
-                            "path": "/user"
+                            "path": "/user",
+                            "icon": "el-icon-user-solid"
                         },
                         {
                             "id": "3",
                             "name": "告警",
-                            "path": "/alarm"
+                            "path": "/alarm",
+                            "icon": ""
                         },
                         {
                             "id": "4",
                             "name": "任务",
-                            "path": "/task"
+                            "path": "/task",
+                            "icon": ""
+                        },
+                        {
+                            "id": "5",
+                            "name": "角色",
+                            "path": "/role",
+                            "icon": ""
                         }
                     ],
                     "msg": "请求成功"

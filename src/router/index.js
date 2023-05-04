@@ -53,6 +53,26 @@ const router = new Router({
           component: () => import('@/components/user/User')
         },
         {
+          path: 'personal',
+          name: 'ShowPersonal',
+          component: () => import('@/components/personal/index')
+        },
+        {
+          path: 'changepasswd',
+          name: 'ChangePasswd',
+          component: () => import('@/components/personal/ChangePasswd')
+        },
+        {
+          path: 'role',
+          name: 'Role',
+          component: () => import('@/components/role/index')
+        },
+        {
+          path: 'editrole',
+          name: 'EditRole',
+          component: () => import('@/components/role/EditRole')
+        },
+        {
           path: 'host',
           name: 'Host',
           component: () => import('@/components/host/index'),

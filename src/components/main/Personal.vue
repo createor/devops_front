@@ -9,6 +9,7 @@
       <!-- 下拉选项 -->
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item command="toPersonal">个人中心</el-dropdown-item>
+        <el-dropdown-item command="toPasswd" divided>修改密码</el-dropdown-item>
         <el-dropdown-item command="toLogOut" divided>登出</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -28,7 +29,14 @@ export default {
         })
       }
       if (command === 'toPersonal') {
-        console.log('跳转至个人中心')
+        this.$router.push({
+          path: '/personal'
+        })
+      }
+      if (command === 'toPasswd') {
+        this.$router.push({
+          path: '/changepasswd'
+        })
       }
     }
   }
