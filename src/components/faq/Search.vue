@@ -1,13 +1,12 @@
-<!-- 部门 -->
+<!-- 搜索组件 -->
 <template>
-  <el-table>
-
-  </el-table>
+  <div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Department'
+  name: 'Search'
 }
 </script>
 

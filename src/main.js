@@ -7,6 +7,7 @@ import store from './store'
 import ElementUI from 'element-ui'
 import './styles/element-variables.scss'
 import '@/styles/index.scss'
+// import wsData from './utils'
 
 // 打印当前环境
 console.log(process.env.NODE_ENV)
@@ -18,6 +19,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 Vue.config.productionTip = false
+
+// 创建ws连接，通过this.$ws调用
+// Vue.prototype.$ws = wsData.getInstance()
 
 Vue.use(ElementUI)
 

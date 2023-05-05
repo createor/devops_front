@@ -73,6 +73,28 @@ const router = new Router({
           component: () => import('@/components/role/EditRole')
         },
         {
+          path: 'department',
+          name: 'Department',
+          component: () => import('@/components/department/index')
+        },
+        {
+          path: 'article',
+          name: 'Article',
+          component: () => import('@/components/article/index'),
+          children: [
+            {
+              path: 'show',
+              name: 'ShowArticle',
+              component: () => import('@/components/article/ShowArticle')
+            }
+          ]
+        },
+        {
+          path: 'faq',
+          name: 'Faq',
+          component: () => import('@/components/faq/index')
+        },
+        {
           path: 'host',
           name: 'Host',
           component: () => import('@/components/host/index'),

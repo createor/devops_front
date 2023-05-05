@@ -27,3 +27,23 @@ export function encryptData (data, key) {
   encrypt.setPublicKey(key)
   return encrypt.encrypt(str1.toString())
 }
+
+/**
+ * @description websocket连接
+ */
+export default function wsData () {
+  // 单例模式
+  let instance
+  function createInstance () {
+    const ws = new WebSocket('ws://')
+    return ws
+  }
+  return {
+    getInstance: function () {
+      if (!instance) {
+        instance = createInstance()
+      }
+      return instance
+    }
+  }
+}
