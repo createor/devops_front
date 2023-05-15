@@ -2,7 +2,7 @@
 <template>
   <div>
     <div>
-      <el-button type="primary" @click="save">保持文件</el-button>
+      <el-button type="primary" @click="save">保存文件</el-button>
     </div>
     <div>
       <editor id="tinymce" v-model="pageContent" :init="init" />
@@ -62,7 +62,6 @@ export default {
         skin_url: './static/tinymce/skins/ui/oxide',
         content_css: './static/tinymce/skins/content/default/content.css',
         plugins: plugins,
-        // plugins: 'image link code table lists wordcount',
         toolbar: toolbar,
         branding: false,
         fontsize_formats: '14px 16px 18px 20px 24px',

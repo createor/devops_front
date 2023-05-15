@@ -27,12 +27,14 @@ export default {
         id: '1',
         articleId: '111',
         title: '问题1',
+        questioner: '用户a',
         content: 'xxxxx'
       },
       {
         id: '2',
         articleId: '112',
         title: '问题2',
+        questioner: '用户b',
         content: 'xxxxx'
       }]
     }

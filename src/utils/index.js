@@ -22,20 +22,23 @@ export function encryptData (data, key) {
   // 参考https://www.cnblogs.com/szy9/p/14803480.html
   // 先进行md5加密
   let str1 = md5(data)
+  console.log(str1)
   // https://blog.csdn.net/qq_40323256/article/details/124006449
   let encrypt = new JSEncrypt()
   encrypt.setPublicKey(key)
-  return encrypt.encrypt(str1.toString())
+  let str2 = encrypt.encrypt(str1.toString())
+  console.log(str2)
+  return str2
 }
 
 /**
  * @description websocket连接
  */
-export default function wsData () {
+export default function wsData (url) {
   // 单例模式
   let instance
   function createInstance () {
-    const ws = new WebSocket('ws://')
+    const ws = new WebSocket(url)
     return ws
   }
   return {

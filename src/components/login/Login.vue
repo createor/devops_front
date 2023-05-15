@@ -12,6 +12,10 @@
             <el-form-item label="密码" prop="passwd">
               <el-input v-model="form.passwd" placeholder="请输入密码" show-password autocomplete="off"></el-input>
             </el-form-item>
+            <el-form-item label="验证码" prop="code">
+              <el-input v-model="form.code" placeholder="请输入验证码" autocomplete="off" maxlength="6" style="width: 140px;"></el-input>
+              <yzm />
+            </el-form-item>
             <el-form-item>
               <el-button :loading="loading" type="primary" @click="onSubmit('form')">登陆</el-button>
             </el-form-item>
@@ -26,9 +30,13 @@
 <script>
 import { getKey } from '@/api/user'
 import { encryptData } from '@/utils'
+import Yzm from './Code'
 
 export default {
   name: 'Login',
+  components: {
+    Yzm
+  },
   data () {
     // 校验用户名规则
     const validateName = (rule, value, callback) => {
@@ -51,10 +59,23 @@ export default {
         }
       }
     }
+    // 校验验证码
+    const validateCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入验证码'))
+      } else {
+        if (value.length !== 6) {
+          callback(new Error('验证码错误'))
+        } else {
+          callback()
+        }
+      }
+    }
     return {
       form: {
         name: '',
-        passwd: ''
+        passwd: '',
+        code: ''
       },
       rules: {
         name: [
@@ -62,6 +83,9 @@ export default {
         ],
         passwd: [
           { required: true, trigger: 'blur', validator: validatePasswd }
+        ],
+        code: [
+          { required: true, trigger: 'blur', validator: validateCode }
         ]
       },
       loading: false,
